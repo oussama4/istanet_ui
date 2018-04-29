@@ -1,5 +1,6 @@
 {
   "presets": [
     "@vue/app"
-  ]
+  ],
+  "plugins": ["inline-import-graphql-ast"]
 }

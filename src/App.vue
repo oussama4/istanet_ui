@@ -18,9 +18,17 @@
     </v-navigation-drawer>
     <v-toolbar color="indigo" dark fixed app>
       <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
-        <v-btn flat href="/">
-        <v-toolbar-title> ISTA Net </v-toolbar-title>
-        </v-btn>
+        <v-toolbar-title> 
+          <router-link to="/" tag="span" style="cursor: pointer"> ISTA Net </router-link> 
+        </v-toolbar-title>
+        <v-spacer></v-spacer>
+        <v-toolbar-items class="hidden-xs-only">
+          <v-btn flat to="/register">
+            <v-icon left>face</v-icon> Register
+          </v-btn>
+          <v-btn flat to="/login">
+            <v-icon left>lock_open</v-icon> Login </v-btn>
+        </v-toolbar-items>
     </v-toolbar>
 
     <v-content>
