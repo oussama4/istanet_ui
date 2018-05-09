@@ -1,35 +1,6 @@
 <template>
   <v-app id="inspire">
-    <v-navigation-drawer
-      fixed
-      v-model="drawer"
-      app
-    >
-      <v-list dense>
-        <v-list-tile @click="">
-          <v-list-tile-action>
-            <v-icon>home</v-icon>
-          </v-list-tile-action>
-          <v-list-tile-content>
-            <v-list-tile-title>Home</v-list-tile-title>
-          </v-list-tile-content>
-        </v-list-tile>
-      </v-list>
-    </v-navigation-drawer>
-    <v-toolbar color="indigo" dark fixed app>
-      <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
-        <v-toolbar-title> 
-          <router-link to="/" tag="span" style="cursor: pointer"> ISTA Net </router-link> 
-        </v-toolbar-title>
-        <v-spacer></v-spacer>
-        <v-toolbar-items class="hidden-xs-only">
-          <v-btn flat to="/register">
-            <v-icon left>face</v-icon> Register
-          </v-btn>
-          <v-btn flat to="/login">
-            <v-icon left>lock_open</v-icon> Login </v-btn>
-        </v-toolbar-items>
-    </v-toolbar>
+    <Header></Header>
 
     <v-content>
       <router-view/>
@@ -42,10 +13,12 @@
 </template>
 
 <script>
+  import Header from './components/Header.vue'
+
 export default {
-    data: () => ({
-      drawer: false
-    })
+  components: {
+    Header
+  }
   }
 </script>
 
