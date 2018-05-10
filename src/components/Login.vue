@@ -47,7 +47,16 @@ import _login from '../graph/login.mutation.graphql'
           }
         }).then(res => {
           this.valid = true
-          console.log(res.data.tokenAuth)
+          localStorage.setItem('authToken', res.data.tokenAuth.token)
+          let u = res.data.tokenAuth.user
+          this.$store.commit('setUser', {
+            id: u.id,
+            first_name: u.first_name,
+            lost_name: u.lost_name,
+            avatar: u.avatar
+          })
+          console.log(res.data.tokenAuth.token)
+          console.log(res.data.tokenAuth.user)
           this.$router.push('/')
         }).catch(err => {
           this.valid = false
