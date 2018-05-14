@@ -42,21 +42,23 @@ import _login from '../graph/login.mutation.graphql'
         graph.mutate({
           mutation: _login,
           variables: {
-            email: this.email,
-            password: this.password
+            input: {
+              email: this.email,
+              password: this.password
+            }
           }
         }).then(res => {
           this.valid = true
-          localStorage.setItem('authToken', res.data.tokenAuth.token)
-          let u = res.data.tokenAuth.user
+          localStorage.setItem('authToken', res.data.tokenAuth.output.token)
+          let u = res.data.tokenAuth.output.user
           this.$store.commit('setUser', {
             id: u.id,
             first_name: u.first_name,
-            lost_name: u.lost_name,
+            last_name: u.last_name,
             avatar: u.avatar
           })
-          console.log(res.data.tokenAuth.token)
-          console.log(res.data.tokenAuth.user)
+          console.log(res.data.tokenAuth.output.token)
+          console.log(res.data.tokenAuth.output.user)
           this.$router.push('/')
         }).catch(err => {
           this.valid = false
