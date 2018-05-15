@@ -1,0 +1,11 @@
+query getUser($token:String!){
+  userByToken(token:$token){
+    id
+    firstName
+    lastName
+    avatar
+    email
+    dateJoined
+    bio
+  }
+}
